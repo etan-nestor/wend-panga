@@ -1,0 +1,70 @@
+@import "tailwindcss";
+:root {
+  --background: #FFFEDC; /* Couleur light de base */
+  --foreground: #171717;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Définition des variables pour les thèmes */
+:root, .light {
+  --color-primary: 59 130 246;
+  --color-secondary: 99 102 241;
+  --color-background: var(--background);
+  --color-text: var(--foreground);
+  --color-card: 249 250 251;
+  --color-border: 229 231 235;
+}
+
+.dark {
+  --color-primary: 96 165 250;
+  --color-secondary: 129 140 248;
+  --color-background: 8 76 100; /* #084C64 en RGB */
+  --color-text: 243 244 246;
+  --color-card: 31 41 55;
+  --color-border: 55 65 81;
+}
+
+.romantique {
+  --color-primary: 236 72 153;
+  --color-secondary: 222 0 104; /* #DE0068 en RGB */
+  --color-background: 222 0 104;
+  --color-text: 255 255 255;
+  --color-card: 251 207 232;
+  --color-border: 253 164 175;
+}
+
+.chocolat {
+  --color-primary: 234 146 94; /* #EA925E en RGB */
+  --color-secondary: 210 125 70;
+  --color-background: 234 146 94;
+  --color-text: 30 30 30;
+  --color-card: 254 242 235;
+  --color-border: 251 211 195;
+}
+
+/* Styles de base */
+body {
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-text));
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  transition: background-color 0.5s ease;
+}
+
+/* Transitions douces pour les changements de thème */
+* {
+  transition: background-color 0.3s ease, color 0.2s ease, border-color 0.3s ease;
+}
+
+.no-transition,
+.no-transition * {
+  transition: none !important;
+}
