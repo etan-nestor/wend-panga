@@ -6,7 +6,7 @@ const AnimatedBadges = () => {
   const badges = ["Discipline", "Travail", "Succès"]
 
   return (
-    <div className="flex gap-2 mb-6">
+    <div className="flex gap-2 mb-4">
       {badges.map((badge, index) => (
         <motion.span
           key={index}

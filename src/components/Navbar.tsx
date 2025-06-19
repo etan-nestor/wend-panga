@@ -45,7 +45,6 @@ const Navbar = () => {
     },
     { name: 'Résultats', path: '/resultats', icon: <BookmarkCheck size={18} /> },
     { name: 'Services', path: '/services', icon: <LineChart size={18} /> },
-    { name: 'Inscription', path: '/inscription', icon: <Users size={18} /> },
     { name: 'Contact', path: '/contact', icon: <Mail size={18} /> },
   ]
 
@@ -57,6 +56,8 @@ const Navbar = () => {
     active: string
     border: string
     dropdown: string
+    logoGradient: string
+    inscriptionGradient: string
   }> = {
     light: {
       bg: 'bg-[#FFFEDC]',
@@ -64,7 +65,9 @@ const Navbar = () => {
       hover: 'hover:text-blue-600',
       active: 'text-blue-600',
       border: 'border-blue-600',
-      dropdown: 'bg-white shadow-lg'
+      dropdown: 'bg-white shadow-lg',
+      logoGradient: 'from-blue-600 to-purple-600',
+      inscriptionGradient: 'from-blue-600 to-purple-600'
     },
     dark: {
       bg: 'bg-[#084C64]',
@@ -72,7 +75,9 @@ const Navbar = () => {
       hover: 'hover:text-blue-300',
       active: 'text-blue-300',
       border: 'border-blue-300',
-      dropdown: 'bg-gray-800 shadow-lg'
+      dropdown: 'bg-gray-800 shadow-lg',
+      logoGradient: 'from-blue-400 to-cyan-400',
+      inscriptionGradient: 'from-blue-400 to-cyan-400'
     },
     romantique: {
       bg: 'bg-[#DE0068]',
@@ -80,7 +85,9 @@ const Navbar = () => {
       hover: 'hover:text-pink-200',
       active: 'text-pink-200',
       border: 'border-pink-200',
-      dropdown: 'bg-[#DE0068] shadow-lg'
+      dropdown: 'bg-[#DE0068] shadow-lg',
+      logoGradient: 'from-pink-500 to-purple-500',
+      inscriptionGradient: 'from-pink-500 to-purple-500'
     },
     chocolat: {
       bg: 'bg-[#EA925E]',
@@ -88,7 +95,9 @@ const Navbar = () => {
       hover: 'hover:text-amber-200',
       active: 'text-amber-200',
       border: 'border-amber-200',
-      dropdown: 'bg-[#EA925E] shadow-lg'
+      dropdown: 'bg-[#EA925E] shadow-lg',
+      logoGradient: 'from-amber-600 to-orange-600',
+      inscriptionGradient: 'from-amber-600 to-orange-600'
     }
   }
 
@@ -108,7 +117,7 @@ const Navbar = () => {
           <motion.div
             whileHover={{ rotate: 360 }}
             transition={{ duration: 1 }}
-            className="p-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600"
+            className={`p-2 rounded-full bg-gradient-to-r ${currentTheme.logoGradient}`}
           >
             <Image src='/images/logo.png' alt='Logo WEND-PANGA' width={30} height={30} className='rounded-full' />
           </motion.div>
@@ -156,18 +165,27 @@ const Navbar = () => {
               ) : (
                 <Link
                   href={item.path}
-                  className={`${currentTheme.text} ${isActive(item.path) ? `${currentTheme.active} border-b-2 ${currentTheme.border}` : currentTheme.hover} transition-colors pb-1`}
+                  className={`whitespace-nowrap ${currentTheme.text} ${isActive(item.path) ? `${currentTheme.active} border-b-2 ${currentTheme.border}` : currentTheme.hover} transition-colors pb-1`}
                 >
                   {item.name}
                 </Link>
               )}
             </div>
           ))}
-         
+
+          {/* Inscription avec style spécial */}
+          <Link
+            href="/inscription"
+            className={`ml-4 px-4 py-2 rounded-full bg-gradient-to-r ${currentTheme.inscriptionGradient} text-white font-medium hover:shadow-lg transition-all`}
+          >
+            Inscription
+          </Link>
         </nav>
+
         <div className="hidden md:block">
-    <ThemeSwitcher />
-  </div>
+          <ThemeSwitcher />
+        </div>
+
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-4">
           <ThemeSwitcher />
@@ -242,6 +260,15 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
+              {/* Inscription dans le menu mobile */}
+              <Link
+                href="/inscription"
+                className={`flex items-center gap-3 py-3 px-2 rounded-lg mx-2 mt-2 bg-gradient-to-r ${currentTheme.inscriptionGradient} text-white font-medium`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Users size={18} />
+                Inscription
+              </Link>
             </div>
           </motion.div>
         )}
