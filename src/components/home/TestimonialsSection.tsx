@@ -11,7 +11,8 @@ const TestimonialsSection = ({ theme }: { theme: string }) => {
       textSecondary: 'text-gray-600',
       cardBg: 'bg-gray-50',
       border: 'border-gray-200',
-      quoteColor: 'text-gray-300'
+      quoteColor: 'text-gray-300',
+      accent: 'text-blue-600'
     },
     dark: {
       sectionBg: 'bg-gray-900',
@@ -19,23 +20,26 @@ const TestimonialsSection = ({ theme }: { theme: string }) => {
       textSecondary: 'text-gray-300',
       cardBg: 'bg-gray-800',
       border: 'border-gray-700',
-      quoteColor: 'text-gray-500'
+      quoteColor: 'text-gray-500',
+      accent: 'text-blue-400'
     },
     romantique: {
-      sectionBg: 'bg-[#DE0068]/10',
-      textPrimary: 'text-white',
-      textSecondary: 'text-gray-300',
-      cardBg: 'bg-gray-800',
-      border: 'border-gray-700',
-      quoteColor: 'text-gray-500'
+      sectionBg: 'bg-rose-50',
+      textPrimary: 'text-rose-900',
+      textSecondary: 'text-rose-700',
+      cardBg: 'bg-white',
+      border: 'border-rose-200',
+      quoteColor: 'text-rose-200',
+      accent: 'text-rose-600'
     },
     chocolat: {
-      sectionBg: 'bg-[#EA925E]/10',
-      textPrimary: 'text-white',
-      textSecondary: 'text-gray-300',
-      cardBg: 'bg-gray-800',
-      border: 'border-gray-700',
-      quoteColor: 'text-gray-500'
+      sectionBg: 'bg-amber-50',
+      textPrimary: 'text-amber-900',
+      textSecondary: 'text-amber-800',
+      cardBg: 'bg-white',
+      border: 'border-amber-200',
+      quoteColor: 'text-amber-200',
+      accent: 'text-amber-600'
     }
   }
 
@@ -61,7 +65,7 @@ const TestimonialsSection = ({ theme }: { theme: string }) => {
 
   return (
     <section className={`py-16 ${currentTheme.sectionBg}`}>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -69,21 +73,22 @@ const TestimonialsSection = ({ theme }: { theme: string }) => {
           className="text-center mb-12"
         >
           <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${currentTheme.textPrimary}`}>
-            Ils témoignent
+            Ils <span className={currentTheme.accent}>témoignent</span>
           </h2>
-          <p className={`max-w-2xl mx-auto ${currentTheme.textSecondary}`}>
+          <p className={`text-lg max-w-2xl mx-auto ${currentTheme.textSecondary}`}>
             Ce que nos élèves et parents disent de nous
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className={`p-6 rounded-lg border ${currentTheme.border} ${currentTheme.cardBg}`}
+              whileHover={{ y: -5 }}
+              className={`p-6 rounded-lg border ${currentTheme.border} ${currentTheme.cardBg} shadow-sm hover:shadow-md transition-all`}
             >
               <Quote className={`w-8 h-8 mb-4 ${currentTheme.quoteColor}`} />
               <p className={`italic mb-4 ${currentTheme.textSecondary}`}>
